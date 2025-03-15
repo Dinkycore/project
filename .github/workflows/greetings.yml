@@ -9,7 +9,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-    - uses: actions/first-interaction@v1
+    - uses: actions/github-script@v5
       with:
          script: |
             const issue = context.payload.issue;
