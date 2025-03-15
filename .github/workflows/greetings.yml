@@ -1,17 +1,17 @@
 name: Welcome newbie
 
-on: [pull_request_target, issues]
+on:
+  issues:
+    types: [opened]
 
 jobs:
-  greeting:
+  greet:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
-    - uses: actions/github-script@v5
-      with:
-         script: |
+      - name: Welcome newbie
+        uses: actions/github-script@v5
+        with:
+          script: |
             const issue = context.payload.issue;
             const username = issue.user.login;
             const greetingMessage = `Привет, @${username}!`;
